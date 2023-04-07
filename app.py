@@ -1,14 +1,15 @@
 import streamlit as st
-import pandas as pd 
-
-import plotly.express as px 
-
+import pandas as pd
+import plotly.express as px
 from PIL import Image
 
-with open("style.css") as f:
-    st.markdown("<style>{}</style>".format(f.read()),unsafe_allow_html=True)
 
+# Set page configuration
 st.set_page_config(page_title="Customer Reviews")
+
+with open("style.css") as f:
+    st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
+
 st.header("Analyzed Customer Reviews")
 st.subheader("Ratings from the customer")
 
@@ -18,19 +19,19 @@ sheet = 'Sheet1'
 
 st.header("Customer Information")
 df = pd.read_excel(excel_file,
-sheet_name=sheet,
-usecols='B:E',
-header=0,)
+                   sheet_name=sheet,
+                   usecols='B:E',
+                   header=0,)
 
 st.subheader("Information on the reviews informations")
 opinion = pd.read_excel(excel_file2,
-sheet_name=sheet,
-usecols='A:C',
-header=0,)
-pie = px.pie(opinion,title="Reviews",values="ProfileName",names="Opinion")
+                        sheet_name=sheet,
+                        usecols='A:C',
+                        header=0,)
+pie = px.pie(opinion, title="Reviews", values="ProfileName", names="Opinion")
 
 st.button("Send a message")
-st.image("whatsapp.png","Send a message to users",100)
+st.image("whatsapp.png", "Send a message to users", 100)
 
 st.dataframe(df)
-st.plotly_chart(pie) 
+st.plotly_chart(pie)
