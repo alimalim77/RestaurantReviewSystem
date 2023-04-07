@@ -3,7 +3,6 @@ import pandas as pd
 import plotly.express as px
 from PIL import Image
 
-
 # Set page configuration
 st.set_page_config(page_title="Customer Reviews")
 
