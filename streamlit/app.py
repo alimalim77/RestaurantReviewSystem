@@ -15,18 +15,21 @@ excel_file = 'restaurant.xlsx'
 excel_file2 = 'opinion.xlsx'
 sheet = 'Sheet1'
 
+# Takes the following total columns and presents them
 st.header("Customer Information")
 df = pd.read_excel(excel_file,
                    sheet_name=sheet,
                    usecols='B:E',
                    header=0,)
 
+# Take the opinion excel file and generates a pie chart
 st.subheader("Information on the reviews informations")
 opinion = pd.read_excel(excel_file2,
                         sheet_name=sheet,
                         usecols='A:C',
                         header=0,)
 pie = px.pie(opinion, title="Reviews", values="ProfileName", names="Opinion")
+
 
 st.button("Send a message")
 st.image("whatsapp.png", "Send a message to users", 100)
