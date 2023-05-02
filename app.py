@@ -36,7 +36,7 @@ bad = sheet_op.cell(row=2, column=2).value
 
 
 pie = px.pie(title="Reviews", values=[good, bad], names=["Good", "Bad"])
-
+workbook_op.save('opinion.xlsx')
 
 st.button("Send a message")
 st.image("whatsapp.png", "Send a message to users", 100)
