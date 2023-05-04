@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import openpyxl as op
+import webbrowser
 
 # Set page configuration
 st.set_page_config(page_title="Customer Reviews")
@@ -38,8 +39,13 @@ bad = sheet_op.cell(row=2, column=2).value
 pie = px.pie(title="Reviews", values=[good, bad], names=["Good", "Bad"])
 workbook_op.save('opinion.xlsx')
 
-st.button("Send a message")
-st.image("whatsapp.png", "Send a message to users", 100)
+link = "https://t.me/myRestaurant123_bot"
+button_label = "Go to Telegram"
+
+if st.button(button_label):
+    webbrowser.open_new_tab(link)
+
+st.image("telegram.png", "Send a message to users", 100)
 
 st.dataframe(df)
 st.dataframe(opinion)
