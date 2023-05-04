@@ -6,6 +6,7 @@ BOT_TOKEN = '6127391390:AAF2yZ1L828iUyROP6wyhZaTz2Odfq77ggU'
 
 bot = tl.TeleBot(BOT_TOKEN)
 fdbk = ''
+score_log = []
 
 
 @bot.message_handler(commands=['start', 'hello'])
@@ -20,6 +21,7 @@ def send_welcome(message):
 @bot.message_handler(func=lambda msg: True)
 def echo_all(message):
     global fdbk
+    global score_log
     # name = message.name
     fid = message.chat.id
     fdbk = message.text
@@ -31,6 +33,7 @@ def echo_all(message):
 
     sheet = workbook.active
     sheet_op = workbook_op.active
+    score_log.append(score)
 
     row = [fid, fdbk, score]
     sheet.append(row)
@@ -42,13 +45,14 @@ def echo_all(message):
 
     # response to user based on score
     if score < -0.2:
-        bot.reply_to(message, "Maaf karo")
+        bot.reply_to(message, "Apologies for the subpar experience.")
         bad += 1
     elif score > 0.2:
-        bot.reply_to(message, "muje bhi achha laga")
         good += 1
+        bot.reply_to(message, "Pleased to serve you well!")
+        bot.reply_to(message, "Thanks for choosing us!! Have a Great Day.")
     else:
-        bot.reply_to(message, "koi na agli baar anna")
+        bot.reply_to(message, "Thanks for choosing us!!")
 
     sheet_op.cell(row=2, column=1, value=good)
     sheet_op.cell(row=2, column=2, value=bad)
@@ -56,7 +60,6 @@ def echo_all(message):
 
     print(message.text)
     print(message)
-    bot.reply_to(message, "Thanks for choosing us!! Have a Great Day.")
 
 
 bot.infinity_polling()
