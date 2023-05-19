@@ -1,6 +1,10 @@
 import telebot as tl
 import analysis
 import openpyxl as op
+import datetime
+
+current_date = datetime.datetime.now()
+food = ("biryani", "pizza", "waffle", "pasta", "fries")
 
 BOT_TOKEN = '6127391390:AAF2yZ1L828iUyROP6wyhZaTz2Odfq77ggU'
 
@@ -23,10 +27,17 @@ def echo_all(message):
     global fdbk
     global score_log
     # name = message.name
+    d_time = message.date
     fid = message.chat.id
     fdbk = message.text
     score = analysis.sia(fdbk)
 
+    flag = False
+    fd_items = ""
+    for i in fdbk.split():
+        if i.lower() in food:
+            fd_items = i.lower()
+            flag = True
     # set up for creating excel file
     workbook = op.load_workbook('Reviews_Ans.xlsx')
     workbook_op = op.load_workbook('opinion.xlsx')
@@ -34,7 +45,12 @@ def echo_all(message):
     sheet = workbook.active
     sheet_op = workbook_op.active
     score_log.append(score)
-
+    if flag:
+        row = [fid, fdbk, score, fd_items,
+               datetime.datetime.fromtimestamp(d_time)]
+    else:
+        row = [fid, fdbk, score, "NULL",
+               datetime.datetime.fromtimestamp(d_time)]
     row = [fid, fdbk, score]
     sheet.append(row)
     workbook.save('Reviews_Ans.xlsx')

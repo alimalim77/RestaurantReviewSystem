@@ -1,3 +1,87 @@
 *{
     align-content: center;
 }
+
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1rem 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.logout-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #555;
+}
+
+.subheader {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.dataframe {
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.dataframe th, .dataframe td {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+}
+
+.dataframe th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    text-align: left;
+}
+
+.plotly-graph-div {
+    margin: 1rem 0;
+}
+
+.button-link {
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #555;
+}
