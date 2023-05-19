@@ -51,7 +51,6 @@ def echo_all(message):
     else:
         row = [fid, fdbk, score, "NULL",
                datetime.datetime.fromtimestamp(d_time)]
-
     row = [fid, fdbk, score]
     sheet.append(row)
     workbook.save('Reviews_Ans.xlsx')
